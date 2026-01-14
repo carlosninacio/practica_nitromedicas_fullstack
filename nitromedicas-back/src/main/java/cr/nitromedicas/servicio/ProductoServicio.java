@@ -15,31 +15,44 @@ public class ProductoServicio implements IProductoServicio {
 
     @Override
     public List<Producto> listarProductos() {
-        return List.of();
+        return this.productoRepositorio.findAll();
     }
 
     @Override
     public Producto buscarProductoPorId(Integer idProducto) {
-        return null;
+        return this.productoRepositorio.findById(idProducto).orElse(null);
     }
 
     @Override
     public void guardarProducto(Producto producto) {
-
+        this.productoRepositorio.save(producto);
     }
 
     @Override
     public void eliminarProductoPorId(Integer idProducto) {
-
+        this.productoRepositorio.deleteById(idProducto);
     }
 
     @Override
     public void agregarExistencia(Integer idProducto, int cantidad) {
-
+        Producto producto = this.productoRepositorio.findById(idProducto).orElse(null);
+        if (producto != null) {
+            producto.setExistencia(producto.getExistencia() + cantidad);
+            this.productoRepositorio.save(producto);
+        }
     }
 
     @Override
     public void quitarExistencia(Integer idProducto, int cantidad) {
+        Producto producto = this.productoRepositorio.findById(idProducto).orElse(null);
 
+        if (producto != null) {
+            if (producto.getExistencia() < cantidad) {
+                throw new RuntimeException("Stock insuficiente");
+            } else {
+                producto.setExistencia(producto.getExistencia() - cantidad);
+                this.productoRepositorio.save(producto);
+            }
+        }
     }
 }
