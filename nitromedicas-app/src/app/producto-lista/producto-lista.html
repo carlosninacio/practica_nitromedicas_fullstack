@@ -12,18 +12,14 @@
     </tr>
   </thead>
   <tbody>
+    @for(producto of productos;track producto.idProducto){
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{producto.idProducto}}</th>
+      <td>{{producto.descripcion}}</td>
+      <td>{{producto.precio}}</td>
+      <td>{{producto.existencia}}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
+  }
   </tbody>
 </table>
 </div>
