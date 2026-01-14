@@ -1,5 +1,6 @@
 package cr.nitromedicas;
 
+import cr.nitromedicas.modelo.Producto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
