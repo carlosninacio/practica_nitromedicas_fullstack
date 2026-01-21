@@ -31,4 +31,12 @@ export class ProductoServicio {
     return this.clienteHttp.delete(`${this.urlBase}/${id}`);
   }
 
+  agregarStock(data: { idProducto: number; cantidad: number }) {
+  return this.clienteHttp.put(`${this.urlBase}/agregar-stock`, data);
+}
+
+quitarStock(data: { idProducto: number; cantidad: number }) {
+  return this.clienteHttp.put(`${this.urlBase}/quitar-stock`, data);
+}
+
 }

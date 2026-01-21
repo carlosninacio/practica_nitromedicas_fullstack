@@ -1,5 +1,6 @@
 package cr.nitromedicas.controlador;
 
+import cr.nitromedicas.dto.StockDTO;
 import cr.nitromedicas.modelo.Producto;
 import cr.nitromedicas.servicio.ProductoServicio;
 import excepcion.RecursoNoEncontradoExcepcion;
@@ -67,5 +68,17 @@ public class ProductoControlador {
             respuesta.put("eliminado", Boolean.TRUE);
             return ResponseEntity.ok(respuesta);
         }
+    }
+
+    @PutMapping("/agregar-stock")
+    public ResponseEntity<Void> agregarStock(@RequestBody StockDTO dto) {
+        productoServicio.agregarExistencia(dto.getIdProducto(), dto.getCantidad());
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/quitar-stock")
+    public ResponseEntity<Void> quitarStock(@RequestBody StockDTO dto) {
+        productoServicio.quitarExistencia(dto.getIdProducto(), dto.getCantidad());
+        return ResponseEntity.ok().build();
     }
 }
