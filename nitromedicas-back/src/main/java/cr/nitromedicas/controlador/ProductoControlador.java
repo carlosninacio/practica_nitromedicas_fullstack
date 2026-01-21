@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 @RestController
 @RequestMapping("nitromedicas-app") //http://localhost:8080/nitromedicas-app
 @CrossOrigin(value = "http://localhost:4200") // Puerto default Angular
@@ -68,4 +69,23 @@ public class ProductoControlador {
             return ResponseEntity.ok(respuesta);
         }
     }
+
+    @PatchMapping("/productos/{id}/stock/agregar")
+    public ResponseEntity<Producto> agregarStock(
+            @PathVariable Integer id,
+            @RequestBody Integer cantidad
+    ) {
+        Producto producto = productoServicio.agregarExistencia(id, cantidad);
+        return ResponseEntity.ok(producto);
+    }
+
+    @PatchMapping("/productos/{id}/stock/quitar")
+    public ResponseEntity<Producto> quitarStock(
+            @PathVariable Integer id,
+            @RequestBody Integer cantidad
+    ) {
+        Producto producto = productoServicio.quitarExistencia(id, cantidad);
+        return ResponseEntity.ok(producto);
+    }
+
 }

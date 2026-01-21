@@ -34,25 +34,18 @@ public class ProductoServicio implements IProductoServicio {
     }
 
     @Override
-    public void agregarExistencia(Integer idProducto, int cantidad) {
+    public Producto agregarExistencia(Integer idProducto, int cantidad) {
         Producto producto = this.productoRepositorio.findById(idProducto).orElse(null);
-        if (producto != null) {
-            producto.setExistencia(producto.getExistencia() + cantidad);
-            this.productoRepositorio.save(producto);
-        }
+        assert producto != null;
+        producto.setExistencia(producto.getExistencia() + cantidad);
+        return this.productoRepositorio.save(producto);
     }
 
     @Override
-    public void quitarExistencia(Integer idProducto, int cantidad) {
+    public Producto quitarExistencia(Integer idProducto, int cantidad) {
         Producto producto = this.productoRepositorio.findById(idProducto).orElse(null);
-
-        if (producto != null) {
-            if (producto.getExistencia() < cantidad) {
-                throw new RuntimeException("Stock insuficiente");
-            } else {
-                producto.setExistencia(producto.getExistencia() - cantidad);
-                this.productoRepositorio.save(producto);
-            }
-        }
+        assert producto != null;
+        producto.setExistencia(producto.getExistencia() - cantidad);
+        return this.productoRepositorio.save(producto);
     }
 }

@@ -9,6 +9,6 @@ public interface IProductoServicio {
     Producto buscarProductoPorId(Integer idProducto);
     Producto guardarProducto(Producto producto);
     void eliminarProductoPorId(Integer idProducto);
-    void agregarExistencia(Integer idProducto, int cantidad);
-    void quitarExistencia(Integer idProducto, int cantidad);
+    Producto agregarExistencia(Integer idProducto, int cantidad);
+    Producto quitarExistencia(Integer idProducto, int cantidad);
 }

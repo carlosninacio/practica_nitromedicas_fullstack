@@ -31,12 +31,18 @@ export class ProductoServicio {
     return this.clienteHttp.delete(`${this.urlBase}/${id}`);
   }
 
-  agregarStock(data: { idProducto: number; cantidad: number }) {
-  return this.clienteHttp.put(`${this.urlBase}/agregar-stock`, data);
+agregarStock(id: number, cantidad: number) {
+  return this.clienteHttp.patch(
+    `${this.urlBase}/${id}/stock/agregar`,
+    cantidad
+  );
 }
 
-quitarStock(data: { idProducto: number; cantidad: number }) {
-  return this.clienteHttp.put(`${this.urlBase}/quitar-stock`, data);
+quitarStock(id: number, cantidad: number) {
+  return this.clienteHttp.patch(
+    `${this.urlBase}/${id}/stock/quitar`,
+    cantidad
+  );
 }
 
 }

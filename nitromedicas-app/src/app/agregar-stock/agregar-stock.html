@@ -1,18 +1,59 @@
 <div class="container">
-    <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  <div class="container text-center" style="margin: 25px">
+    <h3>Agregar Stock</h3>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <!-- DESCRIPCIÓN -->
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">
+        Descripción del Producto
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        id="descripcion"
+        name="descripcion"
+        [(ngModel)]="producto.descripcion"
+        readonly>
+    </div>
+
+    <!-- EXISTENCIA ACTUAL -->
+    <div class="mb-3">
+      <label for="existencia" class="form-label">
+        Existencia Actual
+      </label>
+      <input
+        type="number"
+        class="form-control"
+        id="existencia"
+        name="existencia"
+        [(ngModel)]="producto.existencia"
+        readonly>
+    </div>
+
+    <!-- CANTIDAD A AGREGAR -->
+    <div class="mb-3">
+      <label for="cantidad" class="form-label">
+        Cantidad a Agregar
+      </label>
+      <input
+        type="number"
+        class="form-control"
+        id="cantidad"
+        name="cantidad"
+        [(ngModel)]="cantidad"
+        min="1"
+        required>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-warning me-3">
+        Agregar
+      </button>
+      <a class="btn btn-danger" href="/">Regresar</a>
+    </div>
+
+  </form>
 </div>
