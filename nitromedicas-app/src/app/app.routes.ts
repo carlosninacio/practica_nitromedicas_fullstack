@@ -10,6 +10,6 @@ export const routes: Routes = [
     {path: '', redirectTo:'productos', pathMatch: 'full'},
     {path: 'agregar-producto', component: AgregarProducto},
     {path: 'editar-producto/:id', component: EditarProducto},
-    {path: 'agregar-stock', component: AgregarStock},
-    {path: 'quitar-stock', component: QuitarStock}
+    {path: 'agregar-stock/:id', component: AgregarStock},
+    {path: 'quitar-stock/:id', component: QuitarStock}
 ];

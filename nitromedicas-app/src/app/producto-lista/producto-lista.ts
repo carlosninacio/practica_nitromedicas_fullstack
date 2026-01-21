@@ -35,6 +35,14 @@ export class ProductoLista {
     this.enrutador.navigate(['editar-producto', id])
   }
 
+   agregarStock(id: number) {
+    this.enrutador.navigate(['agregar-stock', id])
+  }
+
+   quitarStock(id: number) {
+    this.enrutador.navigate(['quitar-stock', id])
+  }
+
   eliminarProducto(id:number) {
     this.productoServicio.eliminarProducto(id).subscribe({
       next: (datos) => this.obtenerProductos(),
